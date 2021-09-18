@@ -21,12 +21,6 @@ dotenv.config({ path: path.resolve(__dirname, "../../../.env") });
 const whitelist = get(appPackage, "react-dotenv.whitelist", []);
 
 /**
- * Check for custom homepage (basepath)
- * More Info: https://create-react-app.dev/docs/deployment/#building-for-relative-paths
- */
-const homepage = get(appPackage, "homepage", ".");
-
-/**
  * Remove all environment variables
  * not included in the whitelist
  */
@@ -64,9 +58,9 @@ function patchIndexHtml(html) {
   let $ = cheerio.load(html);
 
   if ($("script#react-dotenv").length) {
-    $("script#react-dotenv").attr("src", `${homepage}/env.js`);
+    $("script#react-dotenv").attr("src", "%PUBLIC_URL%/env.js");
   } else {
-    $("head").append(`\t<script id="react-dotenv" src="${homepage}/env.js"></script>\n\t`);
+    $("head").append(`\t<script id="react-dotenv" src="%PUBLIC_URL%/env.js"></script>\n\t`);
   }
 
   return prettier.format($.html(), { parser: "html" });
