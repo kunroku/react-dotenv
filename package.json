@@ -2,7 +2,7 @@
   "name": "react-dotenv",
   "version": "0.1.2",
   "description": "Load environment variables dynamically for your React applications created with CRA (Create-React-App).",
-  "author": "Jese",
+  "author": "kunroku",
   "license": "MIT",
   "module": "./src/lib.js",
   "bin": {
